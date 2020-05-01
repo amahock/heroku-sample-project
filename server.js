@@ -19,11 +19,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, '/frontEnd/build')));
 
 app.get("/", (req, res) => {
   // res.send("Backend for Java site");
-  res.sendFile(path.join(__dirname, '/client/build/index.html'));
+  res.sendFile(path.join(__dirname, '/frontEnd/build/index.html'));
 });
 
 app.use("/user", LoginRouter);
@@ -33,7 +33,7 @@ app.use("/reset", ResetPasswordRouter);
 app.use("/updatePasswordViaEmail", UpdatePasswordViaEmailRouter);
 
 app.get('*', (req, res) => { 
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  res.sendFile(path.join(__dirname+'/frontEnd/build/index.html'));
  })
 
 const server = app.listen(PORT, () => {
